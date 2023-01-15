@@ -1,12 +1,15 @@
-import fetch from 'node-fetch'
-let handler = async (m, { conn, text, usedPrefix, command }) => {
-if (command == 'aidraw') {
-let res = await (await fetch(`https://api.lolhuman.xyz/api/dall-e?apikey=${global.lolkey}&text=${text}`)).json()
-let cita = res[Math.floor(Math.random() * res.length)]
-await conn.sendButtonImg(m.chat, cita, `Nihh ${text} nya @${m.sender.split('@')[0]}`, wm, `Next`, `${usedPrefix}${command} ${text}`, m, {mentions: [m.sender], jpegThumbnail: await(await fetch(cita)).buffer()})
-}
-}
-handler.command = handler.help = ['aidraw']
-handler.tags = ['tools', 'internet']
+import axios from "axios"
+import fetch from "node-fetch"
 
+let handler = async (m, {command, text, conn}) => {
+
+if (command == 'aidraw') {
+let haha = await conn.getFile(`https://api.lolhuman.xyz/api/dall-e?apikey=${global.lolkey}&text=${text}`)
+conn.sendButton(m.chat, `*${text}*`.trim(), author, haha.data, [[' All Menu ', `.menu`]], m)}
+}
+
+handler.command = handler.help = ['aidraw']
+handler.tags = ['internet', 'tools']
+handler.limit = true
+handler.premium = true
 export default handler

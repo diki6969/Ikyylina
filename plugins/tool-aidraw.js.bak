@@ -7,3 +7,6 @@ await conn.sendButtonImg(m.chat, cita, `Nihh ${text} nya @${m.sender.split('@')[
 }
 }
 handler.command = handler.help = ['aidraw']
+handler.tags = ['tools', 'internet']
+
+export default handler
