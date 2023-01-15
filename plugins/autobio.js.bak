@@ -17,9 +17,8 @@ function clockString(ms) {
 	return [h, m, s].map(v => v.toString().padStart(2, 0)).join(':')
 }
 
-handler.help = ['bio']
-handler.tags = ['tools']
-handler.command = /^(bio)$/i
+handler.command = ['bio']
+handler.tags = ['bio <otomatis>']
 
-
-export default handler
+export.default handler
+// buatan FokusDotId (Fokus ID)
