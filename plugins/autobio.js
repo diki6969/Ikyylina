@@ -1,3 +1,4 @@
+let handler = async (m, { conn, uptime  }) => {
 export async function before(m) {
 	let setting = global.db.data.settings[this.user.jid]
 	if (new Date() * 1 - setting.status > 1000) {
@@ -8,6 +9,7 @@ export async function before(m) {
 		await this.updateProfileStatus(bio).catch(_ => _)
 		setting.status = new Date() * 1
 	}
+}
 }
 
 function clockString(ms) {
